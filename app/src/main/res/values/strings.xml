@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Amazon_clone</string>
+    <string name="btn_registro">¿Ya eres cliente? Iniciar sesión.</string>
+    <string name="link"> hola vamos a <a href="https//:www.google.com" target="_blank">google</a></string>
+    <string name="link_2"> Al continuar, aceptas las <a href="https//:www.google.com" target="_blank"> Condiciones de uso</a>
+    y el <a href=" "> Aviso de privacidad </a> de Amazon.</string>
+    <string name="link_3"><a href="https//:www.google.com" target="_blank">Necesitas Ayuda?</a></string>
+    <string name="link_4"><a href="https//:www.google.com" target="_blank">Aviso de privacidad</a></string>
+    <string name="link_5"><a href="" target="_blank">Condiciones de uso</a></string>
+    <!--<string name="link_5"><a href="https://www.amazon.com/gp/aw/help/ref=ap_mobile_signin_notification_condition_of_use?id=508088&ref_=d6k_applink_bb_dls" target="_blank">Condiciones de uso</a></string>-->
+    <string name="link_6"><a href="https//:www.google.com" target="_blank">Ayuda</a></string>
+
+
+</resources>
