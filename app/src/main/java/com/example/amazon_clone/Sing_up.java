@@ -51,7 +51,7 @@ import java.util.Map;
                 //====== CAMBIAR IP DEPENDE DE LA UBICACION ====
 
 
-                StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.1.7/amazon_clone/insertar.php", new Response.Listener<String>() {
+                StringRequest request = new StringRequest(Request.Method.POST, "http://172.20.10.3/amazon_clone/insertar.php", new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("registro correctamente")) {
@@ -75,7 +75,7 @@ import java.util.Map;
                         javaBinding.etpassword.setText("");
                         Toast.makeText(Sing_up.this,error.getMessage(),Toast.LENGTH_SHORT).show();
                     }
-                }){
+                }){ 
                     @Nullable
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
@@ -87,7 +87,10 @@ import java.util.Map;
                         return map;
                     }
                 };
-                RequestQueue queue= Volley.newRequestQueue(Sing_up.this);
+
+
+
+                RequestQueue queue= Volley.newRequestQueue(getApplicationContext());
                 queue.add(request);
             }
         }
