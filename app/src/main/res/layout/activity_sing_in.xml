@@ -56,7 +56,7 @@
                 android:textSize="30dp" />
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/etcorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -75,7 +75,7 @@
                 android:textSize="25dp" />
 
             <EditText
-                android:id="@+id/editTextTextPassword2"
+                android:id="@+id/etpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -92,7 +92,7 @@
                 android:textSize="25dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btncontinuar"
                 android:layout_width="349dp"
                 android:layout_height="63dp"
                 android:layout_marginLeft="15dp"
