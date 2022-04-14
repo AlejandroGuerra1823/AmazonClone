@@ -7,11 +7,6 @@
         android:color="#B4B4B4"
         ></stroke>
 
-    <padding
-        android:bottom="10sp"
-        android:left="10sp"
-        android:right="10sp"
-        android:top="10sp"></padding>
     <corners
         android:radius="10dp"
         ></corners>
