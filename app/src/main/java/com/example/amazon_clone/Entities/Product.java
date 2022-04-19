@@ -2,13 +2,16 @@ package com.example.amazon_clone.Entities;
 
 import android.media.Image;
 
+import com.google.firebase.firestore.DocumentId;
+
 public class Product {
 
+@DocumentId
  private String id;
  private String nombre;
  private String descripcion;
- private double precio;
- private Image imagen;
+ private String precio;
+
 
  public String getId() {
   return id;
@@ -34,19 +37,12 @@ public class Product {
   this.descripcion = descripcion;
  }
 
- public double getPrecio() {
+ public String getPrecio() {
   return precio;
  }
 
- public void setPrecio(double precio) {
+ public void setPrecio(String precio) {
   this.precio = precio;
  }
 
- public Image getImagen() {
-  return imagen;
- }
-
- public void setImagen(Image imagen) {
-  this.imagen = imagen;
- }
 }

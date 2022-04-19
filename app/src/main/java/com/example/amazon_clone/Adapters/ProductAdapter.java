@@ -29,13 +29,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     //cada vez que se va a crear un elemento . oncreat del mainactivity
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        productItemBinding = productItemBinding.inflate(LayoutInflater.from(context));
-
+        productItemBinding = ProductItemBinding.inflate(LayoutInflater.from(context));
         return new ProductViewHolder(productItemBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductAdapter.ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+        Product product = productArrayList.get(position);
+
+        holder.itemBinding.NombreFroducto.setText(product.getNombre());
+        holder.itemBinding.Descripcion.setText(product.getDescripcion());
+        holder.itemBinding.Precio.setText(product.getPrecio());
+
 
     }
 
@@ -46,9 +51,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public class ProductViewHolder extends RecyclerView.ViewHolder {
 
+        ProductItemBinding itemBinding;
         public ProductViewHolder(@NonNull ProductItemBinding itemBinding) {
             super(itemBinding.getRoot());
-            productItemBinding  = itemBinding;
+            this.itemBinding = itemBinding;
 
         }
     }

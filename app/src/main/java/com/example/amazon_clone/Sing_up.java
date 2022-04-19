@@ -46,12 +46,13 @@ import java.util.Map;
             }else if (email.isEmpty()){
                 javaBinding.etemail.setError("complete los campos");
             }else {
-
-
+                /*prueba cambio*/
                 //====== CAMBIAR IP DEPENDE DE LA UBICACION ====
 
+                //StringRequest request = new StringRequest(Request.Method.POST, "http://172.20.10.3/amazon_clone/insertar.php", new Response.Listener<String>() {
 
-                StringRequest request = new StringRequest(Request.Method.POST, "http://172.20.10.3/amazon_clone/insertar.php", new Response.Listener<String>() {
+                StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.1.5/amazon_clone/insertar.php", new Response.Listener<String>() {
+
                     @Override
                     public void onResponse(String response) {
                         if (response.equalsIgnoreCase("registro correctamente")) {
