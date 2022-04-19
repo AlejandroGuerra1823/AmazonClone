@@ -72,7 +72,7 @@ public class Sing_in extends AppCompatActivity {
 
                 // almacenamos la direccion url en la variable "url"
 
-                String url = "http://172.20.10.3/amazon_clone/ApiRest/features/login/login1.php";
+                String url = "http://192.168.1.1/amazon_clone/ApiRest/features/login/login1.php";
 
                 //por ultimo llamamos  la funcion y le mandamos por parametros el email y el password
                 //la url y los datos guardados en la variable "data" del hasmap
