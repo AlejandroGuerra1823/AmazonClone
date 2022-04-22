@@ -1,4 +1,4 @@
-package com.example.amazon_clone.Entities;
+package com.example.amazon_clone.Models;
 
 import android.media.Image;
 
@@ -11,6 +11,7 @@ public class Product {
  private String nombre;
  private String descripcion;
  private String precio;
+ private String imagen;
 
 
  public String getId() {
@@ -44,5 +45,9 @@ public class Product {
  public void setPrecio(String precio) {
   this.precio = precio;
  }
+
+ public String getImagen() { return imagen; }
+
+ public void setImagen(String imagen) { this.imagen = imagen; }
 
 }

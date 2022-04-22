@@ -12,12 +12,12 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.amazon_clone.Adapters.ProductAdapter;
-import com.example.amazon_clone.Entities.Product;
+import com.example.amazon_clone.Models.Product;
+import com.example.amazon_clone.Services.ListProductService;
 import com.example.amazon_clone.databinding.ActivityHomeBinding;
 import com.example.amazon_clone.databinding.ActivitySingInBinding;
 import com.google.firebase.firestore.DocumentChange;
@@ -32,7 +32,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Home extends AppCompatActivity {
 
@@ -40,6 +47,8 @@ public class Home extends AppCompatActivity {
     private FirebaseFirestore db;
     ArrayList<Product> productArrayList;
     ProductAdapter productAdapter;
+    private String url;
+    Retrofit retrofit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,35 +57,60 @@ public class Home extends AppCompatActivity {
         View view = jb.getRoot();
         setContentView(view);
         db = FirebaseFirestore.getInstance();
+        url= "/amazon_clone/ApiRest/features/list-product/list-product.php";
+
         productArrayList = new ArrayList<>();
         productAdapter = new ProductAdapter(this, productArrayList);
         jb.rvProducts.setHasFixedSize(true);
         jb.rvProducts.setLayoutManager(new LinearLayoutManager(this));
         jb.rvProducts.setAdapter(productAdapter);
+
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl("http://172.20.10.4/").addConverterFactory(GsonConverterFactory.create())
+                .build();
         getProducts();
     }
 
-    public void getProducts() {
-        db.collection("products")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if (error != null) {
-                            Toast.makeText(getApplicationContext(),
-                                    error.getMessage(), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
 
-                        for (DocumentChange dc : value.getDocumentChanges() ) {
+    public void getProducts(){
+        ArrayList<Product> products = new ArrayList();
+      /*  Product p1 = new Product();
+        p1.setNombre("Mouse");
+        Product p2 = new Product();
+        p2.setNombre("Teclado");
+        Product p3 = new Product();
+        p3.setDescripcion("Teclado");
+        Product p4 = new Product();
+        p4.setPrecio("Teclado");
 
-                            if(dc.getType()== DocumentChange.Type.ADDED){
-                                productArrayList.add(dc.getDocument().toObject(Product.class));
-                            }
+        products.add(p1);
+        products.add(p2);
+        products.add(p3);
+        products.add(p4);*/
 
-                        }
-                        productAdapter.notifyDataSetChanged();
-                    }
-                });
+
+        ListProductService listProductService = retrofit.create(ListProductService.class);
+        Call<ArrayList<Product>> listProduct = listProductService.listProduct();
+        listProduct.enqueue(new Callback<ArrayList<Product>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
+                Toast.makeText(Home.this, "hola", Toast.LENGTH_SHORT).show();
+
+                for (int i = 0; i<response.body().size(); i++){
+                    productArrayList.add(response.body().get(i));
                 }
+                productAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Product>> call, Throwable t) {
+
+
+
+            }
+        });
+
+    }
     }
 

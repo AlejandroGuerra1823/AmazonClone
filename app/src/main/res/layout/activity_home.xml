@@ -68,7 +68,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
 
-                android:layout_height="match_parent"
+                android:layout_height="75dp"
                 android:layout_marginTop="0dp"
                 android:orientation="horizontal"
                 android:padding="15dp">
@@ -94,7 +94,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProducts"
         android:layout_width="412dp"
-        android:layout_height="573dp"
+        android:layout_height="570dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

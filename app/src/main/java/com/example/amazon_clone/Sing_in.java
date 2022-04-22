@@ -1,43 +1,31 @@
 package com.example.amazon_clone;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonIOException;
-import com.google.gson.Gson;
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.amazon_clone.Adapters.ProductModel;
 import com.example.amazon_clone.databinding.ActivitySingInBinding;
-import com.example.amazon_clone.models.LoginModel;
 
-import org.json.JSONArray;
-import org.json.JSONException;
+
 import org.json.JSONObject;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class Sing_in extends AppCompatActivity {
 
-    ArrayList <LoginModel> myappmodelarraylist;
+    ArrayList <ProductModel> myappmodelarraylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +60,7 @@ public class Sing_in extends AppCompatActivity {
 
                 // almacenamos la direccion url en la variable "url"
 
-                String url = "http://192.168.1.1/amazon_clone/ApiRest/features/login/login1.php";
+                String url = "http://172.20.10.4/amazon_clone/ApiRest/features/login/login1.php";
 
                 //por ultimo llamamos  la funcion y le mandamos por parametros el email y el password
                 //la url y los datos guardados en la variable "data" del hasmap
