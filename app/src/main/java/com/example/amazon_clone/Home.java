@@ -67,15 +67,39 @@ public class Home extends AppCompatActivity {
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://172.20.10.4/").addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("http://192.168.1.5/").addConverterFactory(GsonConverterFactory.create())
                 .build();
         getProducts();
+
+        jb.carrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(Home.this, Carrito.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
     public void getProducts(){
         ArrayList<Product> products = new ArrayList();
-      /*  Product p1 = new Product();
+
+
+        ListProductService listProductService = retrofit.create(ListProductService.class);
+        Call<ArrayList<Product>> listProduct = listProductService.listProduct();
+        listProduct.enqueue(new Callback<ArrayList<Product>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
+                Toast.makeText(Home.this, "hola", Toast.LENGTH_SHORT).show();
+
+
+
+                for (int i = 0; i<response.body().size(); i++){
+                    productArrayList.add(response.body().get(i));
+                }
+                productAdapter.notifyDataSetChanged();
+            }
+  /*  Product p1 = new Product();
         p1.setNombre("Mouse");
         Product p2 = new Product();
         p2.setNombre("Teclado");
@@ -89,20 +113,6 @@ public class Home extends AppCompatActivity {
         products.add(p3);
         products.add(p4);*/
 
-
-        ListProductService listProductService = retrofit.create(ListProductService.class);
-        Call<ArrayList<Product>> listProduct = listProductService.listProduct();
-        listProduct.enqueue(new Callback<ArrayList<Product>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Product>> call, Response<ArrayList<Product>> response) {
-                Toast.makeText(Home.this, "hola", Toast.LENGTH_SHORT).show();
-
-                for (int i = 0; i<response.body().size(); i++){
-                    productArrayList.add(response.body().get(i));
-                }
-                productAdapter.notifyDataSetChanged();
-            }
-
             @Override
             public void onFailure(Call<ArrayList<Product>> call, Throwable t) {
 
@@ -112,5 +122,8 @@ public class Home extends AppCompatActivity {
         });
 
     }
+
+
+
     }
 

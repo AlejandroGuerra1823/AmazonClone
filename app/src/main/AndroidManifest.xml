@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amazon_clone">
         <activity
+            android:name=".Carrito"
+            android:exported="false" />
+        <activity
             android:name=".Home"
             android:exported="false" />
         <activity

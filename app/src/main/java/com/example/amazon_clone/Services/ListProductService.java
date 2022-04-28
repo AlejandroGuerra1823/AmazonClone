@@ -13,6 +13,13 @@ public interface ListProductService {
     @GET("amazon_clone/ApiRest/features/login/list-product/list-product.php")
     Call<ArrayList<Product>> listProduct();
 
-    @GET("amazon_clone/ApiRest/features/login/list-product/list-product.php")
-    Call<Product> searchProduct(@Path("search")String user);
+    @GET("amazon_clone/ApiRest/Carrito/adicionar_carrito.php")
+    Call<ArrayList<Product>> productCarrito();
+
+    @GET("amazon_clone/ApiRest/Carrito/list_carrito.php")
+    Call<ArrayList<Product>> listCarrito();
+
+    @GET("amazon_clone/ApiRest/Carrito/delete_carrito.php")
+    Call<ArrayList<Product>> deleteCarrito();
+
 }

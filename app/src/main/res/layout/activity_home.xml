@@ -57,7 +57,7 @@
                     app:srcCompat="@drawable/descripcion" />
 
                 <ImageButton
-                    android:id="@+id/imageButton6"
+                    android:id="@+id/carrito"
                     android:layout_width="5dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
